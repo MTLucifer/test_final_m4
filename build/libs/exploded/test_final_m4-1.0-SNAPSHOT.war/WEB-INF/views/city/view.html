@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>City</title>
+    <meta charset="UTF-8">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+
+        body {
+            margin-top: 20px;
+        }
+
+        .fa-fw {
+            width: 2em;
+        }
+
+        form.fix {
+            padding: 10px 10px 10px 15px;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="/cities"><i class="fa fa-home fa-fw"></i>Home</a></li>
+                <li>
+                    <form class="fix" id="admin_page" method="get" action="/cities"><a href="/cities"
+                                                                                      onclick="document.getElementById('admin_page').submit(); return false;">
+                        <i class="fa fa-list-alt fa-fw"></i>List City</a></form>
+                </li>
+
+
+                <li>
+                    <a href="/create-city">
+                        <i class="fa fa-pencil fa-fw"></i>Create City</a></form>
+                </li>
+
+
+
+            </ul>
+        </div>
+        <div class="col-md-9 well">
+            <h1>Thong tin Thanh pho</h1>
+
+
+            <form th:action="@{/delete-city}" th:object="${city}" method="post">
+                <input th:type="hidden" name="id" th:field="*{id}">
+                <table>
+                    <tr>
+                        <td>Ten:</td>
+                        <td th:text="${city.name}"></td>
+                    </tr>
+                    <tr>
+                        <td>Quoc gia:</td>
+                        <td th:text="${city.country.name}"></td>
+                    </tr>
+                    <tr>
+                        <td>Dien tich:</td>
+                        <td th:text="${city.area}"></td>
+                    </tr>
+                    <tr>
+                        <td>Dan so:</td>
+                        <td th:text="${city.population}"></td>
+                    </tr>
+                    <tr>
+                        <td>GDP:</td>
+                        <td th:text="${city.GDP}"></td>
+                    </tr>
+                    <tr>
+                        <td>Gioi thieu:</td>
+                        <td th:text="${city.description}"></td>
+                    </tr>
+
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
