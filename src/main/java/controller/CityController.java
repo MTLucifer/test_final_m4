@@ -80,7 +80,7 @@ public class CityController {
     }
 
     @PostMapping("/edit-city")
-    public ModelAndView updateCustomer(@ModelAttribute("city") City city){
+    public ModelAndView updateCity(@ModelAttribute("city") City city){
         cityService.save(city);
         ModelAndView modelAndView = new ModelAndView("/city/edit");
         modelAndView.addObject("city", city);
@@ -103,7 +103,7 @@ public class CityController {
     }
 
     @PostMapping("/delete-city")
-    public String deleteCustomer(@ModelAttribute("customer") City city){
+    public String deleteCity(@ModelAttribute("customer") City city){
         cityService.remove(city.getId());
         return "redirect:cities";
     }
